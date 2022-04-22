@@ -1,0 +1,6 @@
+<?php
+$dotcc_data = get_option( 'dot_cookie_consent_options' );
+if( !empty($dotcc_data['dot_cookie_consent_description'])):
+?>
+<script> (function() { if (!localStorage.getItem('cookieconsent_<?php echo DOT_COOKIE_CONSENT_VERSION;?>')) { document.body.innerHTML += '\ <div class="cookie-consent-w" style="position:fixed;padding:20px;right:0;left:0;bottom:0;border-top: 2px solid #a2a2a2;background-color:#1d2b4bd9;color:#FFF;text-align:center;z-index:99999;">\ <?php echo $dotcc_data['dot_cookie_consent_description'] ?? '';?> \ <a href="<?php echo $dotcc_data['dot_cookie_consent_privacy_policy_url'] ?? '';?>" style="color:#ffeb3b;text-decoration:underline;margin:0 5px"><?php echo $dotcc_data['dot_cookie_consent_privacy_policy_title'] ?? '';?></a>\ <button type="button" class="btn btn-primary">Ok, concordo!</button>\ </div>\ '; document.querySelector('.cookie-consent-w button').onclick = function(e) { e.preventDefault(); document.querySelector('.cookie-consent-w').style.display = 'none'; localStorage.setItem('cookieconsent_<?php echo DOT_COOKIE_CONSENT_VERSION;?>', true); }; } })(); </script>
+<?php endif;?>
